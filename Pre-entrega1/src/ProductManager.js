@@ -1,6 +1,6 @@
 /*         REUTILIZO EL PRODUCT MANAGER DEL DESAFIO ENTREGABLE N°3          */
 
-const fs = require('fs')
+import fs from 'fs'
 
 /* Realizar una clase "ProductManager" que gestione un conjunto de productos */
 class ProductManager {
@@ -12,7 +12,7 @@ class ProductManager {
     
     async addProduct(product) {
         /* Debe contar con un método addProduct, el cual agregará un producto al arreglo inicial */
-        /* Cada producto debe contar con: title, description, price, thumbnail, code, stock */  
+        /* Cada producto debe contar con: title, description, price, thumbnails, code, stock */  
 
         const products = await this.getProducts();
 
@@ -28,7 +28,8 @@ class ProductManager {
         console.log("AGREGADO DE PRODUCTOS");
 
         /* Verifico campos obligatorios */
-        if( !product.title || !product.description || !product.price || !product.thumbnail || !product.code || !product.stock){
+        if( !product.title || !product.description || !product.price || !product.thumbnails || !product.code || !product.stock || !product.category)
+        {
             console.log ("Error! Todos los campos son obligatorios");
             return;
         }
@@ -37,7 +38,7 @@ class ProductManager {
             title: product.title,
             description: product.description,
             price: product.price,
-            thumbnail: product.thumbnail || [],
+            thumbnails: product.thumbnails || [],
             code: product.code,
             stock: product.stock,
             category: product.category,
@@ -60,7 +61,7 @@ class ProductManager {
         }
         catch (err) {
             if (err.code === "ENOENT"){
-                await this.saveProducts([]);
+                await this.#saveProducts([]);
                 return [];
             }
             throw err;
@@ -113,7 +114,7 @@ class ProductManager {
             title: update.title || products[index].title,
             description: update.description || products[index].description,
             price: update.price || products[index].price,
-            thumbnail: update.thumbnail || products[index].thumbnail,
+            thumbnails: update.thumbnails || products[index].thumbnails,
             code: update.code || products[index].code,
             stock: update.stock || products[index].stock,
             category: update.category || products[index].category,
@@ -127,66 +128,3 @@ class ProductManager {
 }
 
     export default ProductManager;
-
-//Archivo JSON con productos
-const productManager = new ProductManager('./productos.json');
-
-/* PRUEBA DE FUNCIONES GENERADAS EN ENTREGABLE 2*/
-async function prueba() {
-
-    //Add products
-    const product1 = {
-        title: 'Bicicleta MTB 1',
-        description: 'Rodado 29, suspensión delantera, freno a disco',
-        price: 120000,
-        thumbnail: '/image1.png',
-        code: 'MTB1',
-        stock: 10,
-    };
-    const product2 = {
-        title: 'Bicicleta MTB 2',
-        description: 'Rodado 29, horquilla fija, freno a disco hidráulico',
-        price: 170000,
-        thumbnail: '/image2.png',
-        code: 'MTB2',
-        stock: 5,
-    };
-
-    await productManager.addProduct(product1);
-    await productManager.addProduct(product2);
-
-        // Get products by id
-    const productById = await productManager.getProductById(1);
-    if (!productById) {
-        console.log('Fallo en la consulta por ID. No existe un producto con ese id');
-    } else {
-        console.log('Consulta por ID exitosa: Producto por id:\n', productById);
-    }
-
-    //Update products by id
-    const updatedProduct = {
-        title: 'Bicicleta MTB 1',
-        description: 'Descripción actualizada del producto',
-        price: 130000,
-    };
-    const productUpdated = await productManager.updateProductById(8, updatedProduct);
-    if (!productUpdated) {
-        console.log('Fallo en la actualización. No existe un producto con ese id');
-    } else {
-        console.log('Producto actualizado:\n', productUpdated);
-    }
-
-    // Delete products by id
-    const deletedProductId = await productManager.deleteProductById(9);
-    if (!deletedProductId) {
-        console.log('Fallo en la eliminación. No existe un producto con ese id');
-    } else {
-        console.log('ID Producto eliminado:', deletedProductId);
-    }
-
-
-    // Get products
-    console.log('Productos restantes:\n', await productManager.getProducts());
-}
-
-prueba();

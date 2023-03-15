@@ -1,9 +1,8 @@
 import {Router} from 'express';
 import {CartManager} from '../CartManager.js'
-import {__dirname} from '../utils/dirname.js'
 
 const router = Router();
-const managerCart = new CartManager(__dirname + '../carritos.json');
+const managerCart = new CartManager('./carritos.json');
 
 
 //Endpoint para crear nuevo carrito
@@ -21,7 +20,7 @@ router.post('/', async (req,res) => {
 router.get('/:cid', async (req, res) => {
     try{
         const {cid} = req.params;
-        const cart = await managerCart.getCart(~~cid);
+        const cart = await managerCart.getCart(parseInt(cid));
         if (cart) {
                 res.status(200).send({ status: "success", payload: cart });
             } else {

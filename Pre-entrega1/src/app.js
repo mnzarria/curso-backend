@@ -1,6 +1,6 @@
 import express from 'express';
 import cartsRouter from './routes/carts.router.js';
-import productsRouter from '.routes/products.router.js';
+import productsRouter from './routes/products.router.js';
 import {__dirname} from './utils/dirname.js';
 
 
@@ -13,9 +13,7 @@ app.use(express.urlencoded({extended: true}));
 app.use('/api/products', productsRouter);
 app.use('/api/carts', cartsRouter);
 
-const PORT = 8080;
-
-app.listen(PORT, () => {
-    console.log('Escuchando puerto ${PORT}')
+app.listen(8080, () => {
+    console.log('Escuchando puerto 8080')
 
 })

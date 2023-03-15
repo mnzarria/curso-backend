@@ -2,7 +2,7 @@
   "name": "pre-entrega1",
   "version": "1.0.0",
   "description": "Primera pre-entrega del proyecto final de Backend",
-  "main": "app.js",
+  "main": "./src/app.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
