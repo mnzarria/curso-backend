@@ -1,1 +1,46 @@
-[]
+[
+  {
+    "title": "Bicicleta MTB 2",
+    "description": "Rodado 29, horquilla fija, freno a disco hidráulico",
+    "price": 170000,
+    "thumbnails": "/image2.png",
+    "code": "MTB2",
+    "stock": 5,
+    "category": "MTB",
+    "status": true,
+    "id": 1
+  },
+  {
+    "title": "Bicicleta MTB 1",
+    "description": "Descripción actualizada del producto",
+    "price": 130000,
+    "thumbnails": "/image1.png",
+    "code": "MTB1",
+    "stock": 10,
+    "category": "MTB",
+    "status": true,
+    "id": 2
+  },
+  {
+    "title": "Bicicleta playera",
+    "description": "Bicicleta ideal para paseo",
+    "price": 60000,
+    "thumbnails": [],
+    "code": "PLAY1",
+    "stock": 20,
+    "category": "Paseo",
+    "status": true,
+    "id": 3
+  },
+  {
+    "title": "Bicicleta playera niño",
+    "description": "Bicicleta ideal para paseo",
+    "price": 56000,
+    "thumbnails": [],
+    "code": "PLAY2",
+    "stock": 10,
+    "category": "Paseo",
+    "status": true,
+    "id": 4
+  }
+]
