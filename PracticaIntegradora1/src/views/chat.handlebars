@@ -1,0 +1,34 @@
+    <div class="chat-wrap">
+      <div class="header">
+        <div class="detalles">
+          <span id="nombre-to-name"></span>
+        </div>
+      </div>
+    
+        <div class="chat-box">
+      <div id="chat"></div>
+      <div id="chat-box"></div>
+        </div>
+
+      <div class="text-area">
+        <input type="text" class="mensaje" id="message-area" placeholder="Aa" />
+        <button type="button" id="send-message">
+          <i class="bi bi-send-plus"></i>
+        </button>
+      </div>
+    </div>
+
+{{!-- SWAL --}}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+{{!--  --}}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+{{!-- TOASTIFY --}}
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+{{!-- SOCKET IO --}}
+<script src="/socket.io/socket.io.js"></script>
+
+{{!--  --}}
+<script src="/js/chat.js"></script>

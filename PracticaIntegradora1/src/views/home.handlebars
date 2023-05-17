@@ -1,0 +1,27 @@
+{{#if products.length}}
+  <div>
+    <h2>Lista de productos estática</h2><br>
+    <table id="product-table" border="1">
+      <thead>
+        <tr>
+          <th>Productos</th>
+          <th>Precio</th>
+          <th>Stock</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each products}}
+          <tr>
+            <td>{{title}}</td>
+            <td>${{price}}</td>
+            <td>{{stock}}u</td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+    <br />
+  </div>
+{{else}}
+  <h2>Aun no hay productos</h2>
+
+{{/if}}
